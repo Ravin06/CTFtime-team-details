@@ -1,0 +1,1 @@
+# CTFtime-team-details
