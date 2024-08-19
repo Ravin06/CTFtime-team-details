@@ -3,6 +3,19 @@ from datetime import datetime
 
 current_year = datetime.now().year
 
+print('''
+
+  /$$$$$$  /$$$$$$$$ /$$$$$$$$ /$$$$$$$$ /$$$$$$ /$$      /$$ /$$$$$$$$       /$$$$$$$$ /$$$$$$   /$$$$$$  /$$      
+ /$$__  $$|__  $$__/| $$_____/|__  $$__/|_  $$_/| $$$    /$$$| $$_____/      |__  $$__//$$__  $$ /$$__  $$| $$      
+| $$  \__/   | $$   | $$         | $$     | $$  | $$$$  /$$$$| $$               | $$  | $$  \ $$| $$  \ $$| $$      
+| $$         | $$   | $$$$$      | $$     | $$  | $$ $$/$$ $$| $$$$$            | $$  | $$  | $$| $$  | $$| $$      
+| $$         | $$   | $$__/      | $$     | $$  | $$  $$$| $$| $$__/            | $$  | $$  | $$| $$  | $$| $$      
+| $$    $$   | $$   | $$         | $$     | $$  | $$\  $ | $$| $$               | $$  | $$  | $$| $$  | $$| $$      
+|  $$$$$$/   | $$   | $$         | $$    /$$$$$$| $$ \/  | $$| $$$$$$$$         | $$  |  $$$$$$/|  $$$$$$/| $$$$$$$$
+ \______/    |__/   |__/         |__/   |______/|__/     |__/|________/         |__/   \______/  \______/ |________/
+                                                                                                                 
+''')
+
 team_id = input("Enter the team ID: ")
 team_id = int(team_id)
 
@@ -22,7 +35,9 @@ if team_response.status_code == 200:
     country_place = team_data.get('rating', {}).get(current_year_str, {}).get('country_place', 'N/A')
     print(f"Country Place: {country_place}")
     rating = team_data.get('rating', {}).get(current_year_str, {}).get('rating_points', 'N/A')
-    print(f"Rating: {rating:.3f}")
+    if rating != 'N/A':
+        rating = round(rating, 2)
+    print(f"Rating: {rating}")
     print(f"Country: {team_data['country']}\n")
 
     # Continue with results retrieval
